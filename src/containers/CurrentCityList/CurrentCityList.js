@@ -4,7 +4,7 @@ import CityList from '@/components/CityList/CityList'
 
 function mapStateToProps(state) {
   return {
-    items: state.current !== null ? [ state.current ] : [],
+    items: state.current.items,
     controlText: 'add',
   }
 }

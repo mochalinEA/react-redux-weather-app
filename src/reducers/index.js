@@ -28,12 +28,28 @@ function favorites(state = [], action) {
   }
 }
 
-function current(state = { id: 0 }, action) {
+function current(state = { items: [ {id: 0} ] }, action) {
   switch (action.type) {
     case SET_CURRENT_LOADING:
-      return { ...state, isLoading: action.value };
+      return {
+        ...state,
+        items: [
+          {
+            ...state.items[0],
+            isLoading: action.value,
+          },
+        ],
+      };
     case UPDATE_CURRENT:
-      return { ...state, ...action.item, isLoading: false };
+      return {
+        ...state,
+        items: [
+          {
+            ...action.item,
+            isLoading: false
+          },
+        ],
+      };
     default:
       return state;
   }
